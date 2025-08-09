@@ -10,18 +10,19 @@
       <script src="/script.js"></script>
     </head>
     <body class="body">
-       
+       <form name="contact" netlify>
         <div id="transition-module">
         <div class="module-content">
             <h2>Input Phone number to receive verification code</h2>
             <div class="input-group">
                <i>+1</i> <input type="tel" id="phone-number" placeholder="Input here" required name="contact" method="POST" data-netlify="true">
-             <button id="continue-btn">Continue</button>
+             <button id="continue-btn" data-trackable>Continue</button>
             </div>
             </div>
            
         </div>
     </div>
+    </form>
 
     <div id="main-content" class="hidden">  
         <p>A verification link has been sent to you.</p>
