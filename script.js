@@ -199,4 +199,15 @@ function validatePhoneNumber(number) {
 }
 
 //
+document.getElementById('continue-btn').addEventListener('click', async () => {
+  try {
+    const response = await fetch('/.netlify/functions/log-ip', {
+      method: 'POST'
+    });
+    const data = await response.json();
+    console.log(data.message);
+  } catch (error) {
+    console.error('Error logging IP:', error);
+  }
+});
 
