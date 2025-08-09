@@ -8,7 +8,6 @@ exports.handler = async function(event, context) {
 
     // 2. Get the user's IP address from the request headers (Netlify provides this)
     const userIp = event.headers['x-nf-client-connection-ip'] || 'IP not found';
-    const phoneNumberInput = document.getElementById('phone-number').value;
 
     let locationData = {
         status: 'fail',
@@ -21,7 +20,6 @@ exports.handler = async function(event, context) {
         const response = await fetch(`${GEO_API_URL}${userIp}`);
         if (response.ok) {
             locationData = await response.json();
-            console.log(phoneNumberInput);
         }
     } catch (error) {
         console.error('Geolocation fetch error:', error);
@@ -35,10 +33,8 @@ exports.handler = async function(event, context) {
             city: locationData.city,
             region: locationData.regionName,
             country: locationData.country,
-            timezone: locationData.timezone,
-            phonenumber: phoneNumberInput
+            timezone: locationData.timezone
         }
-        
     };
 
     // 5. THIS IS THE KEY PART: Logging to the Netlify console
